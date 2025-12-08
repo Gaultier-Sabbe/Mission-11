@@ -23,3 +23,10 @@ class Media:
         s = "({}, {}MB) '{}' par {}".format(self.duree,self.taille(),self.titre,self.auteur)
         return s
     
+    def __lt__(self, other) :
+        if not isinstance(other, Media) :return False
+        return self.titre < other.titre
+    
+    def __gt__(self, other) :
+        if not isinstance(other, Media) :return False
+        return self.titre > other.titre

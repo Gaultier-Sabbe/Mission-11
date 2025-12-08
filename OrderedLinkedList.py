@@ -3,7 +3,11 @@
 ###########################
 
 class OrderedLinkedList:
-    
+    class Node:
+        def __init__(self, data, pre=None, next=None):
+            self.data = data
+            self.pre = pre
+            self.next = next
     def __init__(self, lst=[]):
         """
         Initialises a new linked list object, with a given list of elements lst.
@@ -16,6 +20,9 @@ class OrderedLinkedList:
                will have 0 length, contain no nodes and its head will point to None. 
         """
         pass
+        self.__head = None
+        self.__tail = None
+        self.__length = 0
             
     def size(self):
         """
@@ -23,7 +30,7 @@ class OrderedLinkedList:
         @pre:  -
         @post: Returns the number of nodes (possibly zero) contained in this ordered linked list.
         """
-        pass
+        return self.__length
         
     def add(self, cargo):
         """ 
@@ -33,7 +40,13 @@ class OrderedLinkedList:
                This new Node is added to the ordered linked list in an ordered manner.
                The length counter has been incremented by 1.
         """
-        pass
+        new_node = self.Node(cargo,self.__tail,None)
+        self.__tail.next = new_node
+        self.__tail = new_node
+        if self.__head == None:
+            self.__head = self.__tail
+        self.__length += 1
+
 
     def remove(self, cargo):
         """
@@ -41,6 +54,21 @@ class OrderedLinkedList:
         Leaves the list intact if already empty or if a node with that cargo
         doesn't exist.
         """
-        pass
+        if self.__head != None:
+            done = False
+            if self.__head.data == cargo:
+                self.__head == self.__head.next
+                self.__head.pre = None
+                done = True
+            else:
+                cur = self.__head
+                while cur.next is not None and cur.next.data != cargo:
+                    if cur.next.data == cargo:
+                        cur.next = cur.next.next
+                        cur.next.pre = cur
+                        done = True
+                    cur = cur.next
+            if done:
+                self.__length -= 1
 
 

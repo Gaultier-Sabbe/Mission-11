@@ -36,19 +36,20 @@ class ListeLecture:
         @pre: media est une instance de 'Media'
         @post: la liste de lecture ne contient plus 'media'
         """
-        done = False
-        if self.__head.data == media:
-            self.__head == self.__head.next
-            done = True
-        else:
-            cur = self.__head
-            while cur.next is not None and cur.next.data != media:
-                cur = cur.next
-                if cur.next.data == media:
-                    cur = cur.next.next
-                    done = True
-        if done:
-            self.__length -= 1
+        if self.__head != None:
+            done = False
+            if self.__head.data == media:
+                self.__head == self.__head.next
+                done = True
+            else:
+                cur = self.__head
+                while cur.next is not None and cur.next.data != media:
+                    if cur.next.data == media:
+                        cur.next = cur.next.next
+                        done = True
+                    cur = cur.next
+            if done:
+                self.__length -= 1
 
 
 
