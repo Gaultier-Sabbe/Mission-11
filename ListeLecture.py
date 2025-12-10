@@ -10,11 +10,22 @@ class ListeLecture:
         self.duree = Duree(0, 0, 0)
         self.medias = LinkedList()
 
+    """
+    Ajoute 'media' à la liste de lecture
+    @pre:  media est une instance de 'Media'
+    @post: la liste de lecture comprend maintenant 'media'
+    """
     def ajouter(self, media):
 
         self.medias.add(media)
         self.duree.ajouter(media.duree)
 
+    """
+    Retire 'media' la première occurence de 'media' à la liste de lecture
+    @pre:  media est une instance de 'Media'
+    @post: la première instance de 'media' dans la liste de lecture
+           a été supprimé
+    """
     def retirer(self, media):
         if self.medias.first() != None:
             head = self.medias.first()
@@ -38,9 +49,14 @@ class ListeLecture:
                 if cur.next() is None:
                     self.medias.last = cur
 
+    """Renvoie le nombre de medias dans liste"""
     def nombre_de_medias(self):
         return self.medias.size()
 
+    """
+    Renvoie un string avec une description de la liste
+    et tous ses éléments.
+    """
     def __str__(self):
         
         s = "[#{}] {} ({} medias)\n".format(self.id, self.name, self.nombre_de_medias())
@@ -65,31 +81,3 @@ class ListeLectureOrdonnee(ListeLecture):
     def __init__(self, name, id) :
         super().__init__(name, id)
         self.medias = OrderedLinkedList()
-
-    """
-    Ajoute 'media' à la liste de lecture
-    @pre:  media est une instance de 'Media'
-    @post: la liste de lecture comprend maintenant 'media'
-    """
-    def ajouter(self, media) :
-        super().ajouter(media)
-
-    """
-    Retire 'media' la première occurence de 'media' à la liste de lecture
-    @pre:  media est une instance de 'Media'
-    @post: la première instance de 'media' dans la liste de lecture
-           a été supprimé
-    """
-    def retirer(self, media) :
-        super().retirer(media)
-
-    """Renvoie le nombre de medias dans liste"""
-    def nombre_de_medias(self) :
-        super().nombre_de_medias()
-
-    """
-    Renvoie un string avec une description de la liste
-    et tous ses éléments.
-    """
-    def __str__(self) :
-        super().__str__()
