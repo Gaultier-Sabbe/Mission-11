@@ -82,8 +82,79 @@ def test_add_avec_doublons():
     lst = OrderedLinkedList()
     lst.add(5)
     lst.add(3)
+    lst.add(5)
+    lst.add(4)
+    assert lst.size() == 4
+    assert to_py_list(lst) == [3, 4, 5, 5]
     print("Test réussi :\ttest_add_avec_doublons()")
-    
+
+# Tests remove(cargo)
+
+def test_remove_sur_liste_vide():
+    lst = OrderedLinkedList()
+    lst.remove(10)
+    assert lst.size() == 0
+    assert to_py_list(lst) == []
+    print("Test réussi :\ttest_remove_sur_liste_vide()")
+
+
+def test_remove_tete():
+    lst = OrderedLinkedList()
+    lst.add(3)
+    lst.add(5)
+    lst.add(7)
+    lst.remove(3)
+    assert lst.size() == 2
+    assert to_py_list(lst) == [5, 7]
+    assert lst.first().value() == 5
+    print("Test réussi :\ttest_remove_tete()")
+
+
+def test_remove_milieu():
+    lst = OrderedLinkedList()
+    lst.add(1)
+    lst.add(3)
+    lst.add(5)
+    lst.add(7)
+    lst.remove(5)
+    assert lst.size() == 3
+    assert to_py_list(lst) == [1, 3, 7]
+    print("Test réussi :\ttest_remove_milieu()")
+
+
+def test_remove_dernier():
+    lst = OrderedLinkedList()
+    lst.add(2)
+    lst.add(4)
+    lst.add(6)
+    lst.remove(6)
+    assert lst.size() == 2
+    assert to_py_list(lst) == [2, 4]
+    assert lst.last.value() == 4
+    print("Test réussi :\ttest_remove_dernier()")
+
+
+def test_remove_element_inexistant():
+    lst = OrderedLinkedList()
+    lst.add(1)
+    lst.add(2)
+    lst.add(3)
+    lst.remove(10)
+    assert lst.size() == 3
+    assert to_py_list(lst) == [1, 2, 3]
+    print("Test réussi :\ttest_remove_element_inexistant()")
+
+
+def test_remove_premiere_occurrence_seulement():
+    lst = OrderedLinkedList()
+    lst.add(2)
+    lst.add(2)
+    lst.add(2)
+    lst.remove(2)
+    assert lst.size() == 2
+    assert to_py_list(lst) == [2, 2]
+    print("Test réussi :\ttest_remove_premiere_occurrence_seulement()")
+
 
 # Appelle de tous les tests
 
@@ -94,3 +165,9 @@ test_add_insertion_en_tete()
 test_add_insertion_au_milieu()
 test_add_insertion_a_la_fin()
 test_add_avec_doublons()
+test_remove_sur_liste_vide()
+test_remove_tete()
+test_remove_milieu()
+test_remove_dernier()
+test_remove_element_inexistant()
+test_remove_premiere_occurrence_seulement()
