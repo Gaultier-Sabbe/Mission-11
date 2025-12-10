@@ -1,13 +1,13 @@
 from Duree import Duree
-from LinkedList import LinkedList
+from OrderedLinkedList import OrderedLinkedList
 
-class ListeLecture:
+class ListeLecture(OrderedLinkedList):
 
     def __init__(self, name, id):
         self.name = name
         self.id = id
         self.duree = Duree(0, 0, 0)
-        self.__medias = LinkedList()
+        self.__medias = OrderedLinkedList()
 
     def ajouter(self, media):
 
