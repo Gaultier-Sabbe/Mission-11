@@ -57,7 +57,39 @@ class ListeLecture:
         return s
 
 class ListeLectureOrdonnee(ListeLecture):
-    def __init__(self, name, id):
+    """
+    @pre:  name est un string
+           id est un entier
+    @post: une instance de 'ListeLecture' ayant un identifiant unique.
+    """
+    def __init__(self, name, id) :
         super().__init__(name, id)
         self.medias = OrderedLinkedList()
-    
+
+    """
+    Ajoute 'media' à la liste de lecture
+    @pre:  media est une instance de 'Media'
+    @post: la liste de lecture comprend maintenant 'media'
+    """
+    def ajouter(self, media) :
+        super().ajouter(media)
+
+    """
+    Retire 'media' la première occurence de 'media' à la liste de lecture
+    @pre:  media est une instance de 'Media'
+    @post: la première instance de 'media' dans la liste de lecture
+           a été supprimé
+    """
+    def retirer(self, media) :
+        super().retirer(media)
+
+    """Renvoie le nombre de medias dans liste"""
+    def nombre_de_medias(self) :
+        super().nombre_de_medias()
+
+    """
+    Renvoie un string avec une description de la liste
+    et tous ses éléments.
+    """
+    def __str__(self) :
+        super().__str__()
