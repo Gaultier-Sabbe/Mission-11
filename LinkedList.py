@@ -99,7 +99,7 @@ class LinkedList :
         while current is not None:
             s += " " + str(current)
             current = current.next()
-        s += " ]"
+        s += "]"
         return s
 
 ##############

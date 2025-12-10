@@ -40,4 +40,10 @@ assert not ( chanson2 == chanson3 )
 assert not ( chanson2 is chanson3 )
 print("(test OK)")
 
+print("TEST 5. Comparaison des objets de type Media")
+assert chanson1 < chanson2
+assert chanson2 > chanson1
+assert not chanson3 < chanson2
+print("(test OK)")
+
 print("ALL TESTS PASSED")
